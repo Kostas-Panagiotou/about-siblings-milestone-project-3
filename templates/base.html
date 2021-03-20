@@ -1,27 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" 
-        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" type="text/css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-    {% block styles %}
-    {% endblock %}
-    <title>About Siblings</title>
-</head>
-<body>
-    
-    {% block content %}
-    {% endblock %}
-    
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    {% block scripts %}
-    {% endblock %}
-</body>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" 
+         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" type="text/css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+      {% block styles %}
+      {% endblock %}
+      <title>About Siblings</title>
+   </head>
+   <body>
+      <header>
+         <!-- top navbar -->
+         <nav class="nav-extend text-shadow yellow accent-3">
+            <div class="nav-wrapper">
+               <a href="{{ url_for('get_superheroes') }}" class="brand-logo  left black-text ">[about siblings]</a>
+               <a href="#" data-target="mobile-demo" class="sidenav-trigger  right"><i class="fa fa-bars"></i></a>
+               <ul class="right hide-on-med-and-down  lime lighten-1  text-darken 2">
+                  <li><a href="">Home</a></li>
+                  <li><a href="">About</a></li>
+                  <li><a href="">Our Stories</a></li>
+                  <li><a href="">Methodology</a></li>
+                  <li><a href="">Short Documentary</a></li>
+                  <li><a href="">Login</a></li>
+                  <li><a href="">Logout</a></li>
+                  <li><a href="">Sing Up</a></li>
+               </ul>
+            </div>
+         </nav>
+         <!-- mobile sidenav -->
+         <ul class="sidenav" id="mobile-demo">
+            <li>
+               <h4 class="center-align yellow accent-2 text-darken 2">[about siblings]</h4>
+            </li>
+            <li><a href="{{ url_for('get_superheroes') }}">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Our Stories</a></li>
+            <li><a href="">Methodology</a></li>
+            <li><a href="">Short Documentary</a></li>
+            <li><a href="">Login</a></li>
+            <li><a href="">Logout</a></li>
+            <li><a href="">Sing Up</a></li>
+         </ul>
+      </header>
+      
+       <!-- container with 2 images and text -->
+      <div class="parallax-container">
+         <div class="parallax"><img src="static/assets/images/siblings-superhero.jpg"></div>
+      </div>
+      <div class="section white">
+         <div class="row container">
+            <h2 class="header">[about siblings]</h2>
+            <p class="grey-text text-darken-3 lighten-3"> is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+         </div>
+      </div>
+      <div class="parallax-container">
+         <div class="parallax"><img src="static/assets/images/draw.jpg"></div>
+      </div>
+      {% block content %}
+      {% endblock %}
+      
+      <!--Footer-->    
+      <footer class="page-footer">
+         <div class="container">
+            <div class="row">
+               <div class="col l6 s12">
+                  <h5 class="white-text">Footer Content</h5>
+                  <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+               </div>
+               <div class="col l4 offset-l2 s12">
+                  <h5 class="white-text">Links</h5>
+                  <ul>
+                     <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                     <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                     <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                     <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="footer-copyright">
+            <div class="container center-align">
+               © 2021 Kostas Panagiotou
+            </div>
+         </div>
+      </footer>
+      
+       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+      {% block scripts %}
+      {% endblock %}
+   </body>
 </html>
