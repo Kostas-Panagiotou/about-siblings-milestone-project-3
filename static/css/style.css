@@ -14,3 +14,8 @@ max-width: 100vw;
 }
 
 
+ .card-panel {
+   background-color: orange;
+   width: auto;
+}
+

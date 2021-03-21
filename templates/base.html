@@ -12,6 +12,7 @@
       <title>About Siblings</title>
    </head>
    <body>
+      
       <header>
          <!-- top navbar -->
          <nav class="nav-extend text-shadow yellow accent-3">
@@ -19,17 +20,18 @@
                <a href="{{ url_for('get_superheroes') }}" class="brand-logo  left black-text ">[about siblings]</a>
                <a href="#" data-target="mobile-demo" class="sidenav-trigger  right"><i class="fa fa-bars"></i></a>
                <ul class="right hide-on-med-and-down  lime lighten-1  text-darken 2">
-                  <li><a href="">Home</a></li>
+                  <li><a href="{{ url_for('get_superheroes') }}">Home</a></li>
                   <li><a href="">About</a></li>
                   <li><a href="">Our Stories</a></li>
                   <li><a href="">Methodology</a></li>
                   <li><a href="">Short Documentary</a></li>
                   <li><a href="">Login</a></li>
                   <li><a href="">Logout</a></li>
-                  <li><a href="">Sing Up</a></li>
+                  <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
                </ul>
             </div>
          </nav>
+         
          <!-- mobile sidenav -->
          <ul class="sidenav" id="mobile-demo">
             <li>
@@ -42,11 +44,15 @@
             <li><a href="">Short Documentary</a></li>
             <li><a href="">Login</a></li>
             <li><a href="">Logout</a></li>
-            <li><a href="">Sing Up</a></li>
+            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
          </ul>
       </header>
+      <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main> 
       
-       <!-- container with 2 images and text -->
+      <!-- container with 2 images and text -->
       <div class="parallax-container">
          <div class="parallax"><img src="static/assets/images/siblings-superhero.jpg"></div>
       </div>
@@ -59,9 +65,10 @@
       <div class="parallax-container">
          <div class="parallax"><img src="static/assets/images/draw.jpg"></div>
       </div>
-      {% block content %}
-      {% endblock %}
-      
+       
+    
+     
+    
       <!--Footer-->    
       <footer class="page-footer">
          <div class="container">
@@ -87,7 +94,8 @@
             </div>
          </div>
       </footer>
-      
+     
+    
        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
