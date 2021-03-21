@@ -22,6 +22,7 @@
                <ul class="right hide-on-med-and-down  lime lighten-1  text-darken 2">
                   <li><a href="{{ url_for('get_superheroes') }}">Home</a></li>
                   <li><a href="">About</a></li>
+                   <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                   <li><a href="">Our Stories</a></li>
                   <li><a href="">Methodology</a></li>
                   <li><a href="">Short Documentary</a></li>
@@ -39,6 +40,7 @@
             </li>
             <li><a href="{{ url_for('get_superheroes') }}">Home</a></li>
             <li><a href="">About</a></li>
+             <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
             <li><a href="">Our Stories</a></li>
             <li><a href="">Methodology</a></li>
             <li><a href="">Short Documentary</a></li>
