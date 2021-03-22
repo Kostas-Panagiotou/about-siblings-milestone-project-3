@@ -1,6 +1,7 @@
 import os
-from flask import ( Flask, flash, render_template,
-     redirect, request, session, url_for)
+from flask import (
+       Flask, flash, render_template,
+       redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -48,6 +49,8 @@ def signup():
         return redirect(url_for("profile", username=session["user"]))
     return render_template("signup.html")
 
+#  login-logout functionality
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -84,7 +87,18 @@ def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    return render_template("profile.html", username=username)
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    return redirect(url_for("login"))
+
+
+@app.route("/logout")
+def logout():
+    # logout user from session cookies
+    flash("You have been logged out of your account!")
+    session.pop("user")
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":

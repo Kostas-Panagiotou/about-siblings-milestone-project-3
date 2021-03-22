@@ -21,15 +21,19 @@
                <a href="#" data-target="mobile-demo" class="sidenav-trigger  right"><i class="fa fa-bars"></i></a>
                <ul class="right hide-on-med-and-down  lime lighten-1  text-darken 2">
                   <li><a href="{{ url_for('get_superheroes') }}">Home</a></li>
+                  {% if session.user %}
                   <li><a href="">About</a></li>
-                   <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                  <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                  <li><a href="">Add Your Story</a></li>
+                  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  {% else %}
                   <li><a href="">Our Stories</a></li>
                   <li><a href="">Methodology</a></li>
                   <li><a href="">Short Documentary</a></li>
                   <li><a href="{{ url_for('login') }}">Login</a></li>
-                  <li><a href="">Logout</a></li>
                   <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
-               </ul>
+                  {% endif %}
+                </ul>
             </div>
          </nav>
          
@@ -39,14 +43,18 @@
                <h4 class="center-align yellow accent-2 text-darken 2">[about siblings]</h4>
             </li>
             <li><a href="{{ url_for('get_superheroes') }}">Home</a></li>
-            <li><a href="">About</a></li>
-             <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-            <li><a href="">Our Stories</a></li>
-            <li><a href="">Methodology</a></li>
-            <li><a href="">Short Documentary</a></li>
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-            <li><a href="">Logout</a></li>
-            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+             {% if session.user %}
+                  <li><a href="">About</a></li>
+                  <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                  <li><a href="">Add Your Story</a></li>
+                  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  {% else %}
+                  <li><a href="">Our Stories</a></li>
+                  <li><a href="">Methodology</a></li>
+                  <li><a href="">Short Documentary</a></li>
+                  <li><a href="{{ url_for('login') }}">Login</a></li>
+                  <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                  {% endif %}
          </ul>
       </header>
       
