@@ -1,8 +1,6 @@
-$(document).ready(function(){
+$(document).ready(function() {
     $('.sidenav').sidenav({edge: "right"});
+    $('.parallax').parallax();
+    $('.collapsible').collapsible();
 });
 
-$(document).ready(function(){
-    $('.parallax').parallax();
-  });
-        
