@@ -3,6 +3,7 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" 
          integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" type="text/css"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
@@ -15,7 +16,7 @@
       
       <header>
          <!-- top navbar -->
-         <nav class="nav-extend text-shadow yellow accent-3">
+         <nav class="nav-extend text-shadow lime lighten-1  text-darken 2 ">
             <div class="nav-wrapper">
                <a href="{{ url_for('get_superheroes') }}" class="brand-logo  left black-text ">[about siblings]</a>
                <a href="#" data-target="mobile-demo" class="sidenav-trigger  right"><i class="fa fa-bars"></i></a>
@@ -40,7 +41,7 @@
          <!-- mobile sidenav -->
          <ul class="sidenav" id="mobile-demo">
             <li>
-               <h4 class="center-align yellow accent-2 text-darken 2">[about siblings]</h4>
+               <h4 class="center-align text-shadow lime lighten-1  text-darken 2">[about siblings]</h4>
             </li>
             <li><a href="{{ url_for('get_superheroes') }}">Home</a></li>
              {% if session.user %}
@@ -94,7 +95,7 @@
      
     
       <!--Footer-->    
-      <footer class="page-footer">
+      <footer class="page-footer text-shadow lime lighten-1  text-darken 2 ">
          <div class="container">
             <div class="row">
                <div class="col l6 s12">
