@@ -22,3 +22,15 @@ max-width: 100vw;
 .flashes h4 {
    line-height: 2;
 }
+
+.row container {
+    width: fit-content;
+}
+
+.img {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    object-fit: cover;
+    z-index: -1;
+}
