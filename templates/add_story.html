@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="orange-text  center-align">Add Your Story</h3>
+
+    <div class="row card-panel orange lighten-5">
+        <form class="col s12" method="POST" action="">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-pencil-alt prefix light-orange-text text-darken-4"></i>
+                    <input id="illustration_lab" name="illustration_lab" minlength="1" maxlength="200"
+                        type="text" class="validate">
+                    <label for="illustration_lab">Illustration Lab</label>
+                <div class="file-field input-field">
+      <div class="btn orange">
+        <span>File</span>
+        <input type="file" multiple>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+      </div>
+    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-pencil-alt prefix light-orange-text text-darken-4"></i>
+                    <textarea id="music_lab" name="music_lab" minlength="1"
+                        maxlength="200" class="materialize-textarea validate" ></textarea>
+                    <label for="music_lab">Music Lab</label>
+               <div class="file-field input-field">
+      <div class="btn orange ">
+        <span>File</span>
+        <input type="file" multiple>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+      </div>
+    </div>
+                
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-pencil-alt prefix light-orange-text text-darken-4"></i>
+                    <input id="dialogue_sessions" name="dialogue_sessions" type="text">
+                    <label for="dialogue_sessions">Dialogue Sessions</label>
+               <div class="file-field input-field">
+      <div class="btn orange ">
+        <span>File</span>
+        <input type="file" multiple>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+      </div>
+    </div>
+       
+      </div>
+                
+            </div>
+			 <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-pencil-alt prefix light-orange-text text-darken-4"></i>
+                    <textarea id="our_wearable_sculptures" name="our_wearable_sculptures" minlength="1"
+                        maxlength="200" class="materialize-textarea validate"></textarea>
+                    <label for="our_wearable_sculptures">Our Wearable Sculptures</label>
+                   <div class="file-field input-field">
+      <div class="btn orange ">
+        <span>File</span>
+        <input type="file" multiple>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+      </div>
+    </div>
+                </div>
+            </div>
+        
+	    </form>
+    </div>
+
+{% endblock %}
+        
+
+
+
+
+
+
+
+
+
+
+
