@@ -25,7 +25,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_superheroes")
 def get_superheroes():
-    superheroes = mongo.db.siblings.find()
+    superheroes = list(mongo.db.superheroes.find())
     return render_template("superheroes.html", superheroes=superheroes)
 
 
@@ -108,7 +108,9 @@ def logout():
     return redirect(url_for("login"))
 
 
-
+@app.route("/add_story")
+def add_story():
+    return render_template("add_story.html")
 
 
 if __name__ == "__main__":
