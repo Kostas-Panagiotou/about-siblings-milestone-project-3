@@ -25,7 +25,7 @@
                   {% if session.user %}
                   <li><a href="">About</a></li>
                   <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                  <li><a href="">Add Your Story</a></li>
+                  <li><a href="{{ url_for('add_story') }}">Add Your Story</a></li>
                   <li><a href="{{ url_for('logout') }}">Logout</a></li>
                   {% else %}
                   <li><a href="">Our Stories</a></li>
@@ -47,7 +47,7 @@
              {% if session.user %}
                   <li><a href="">About</a></li>
                   <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                  <li><a href="">Add Your Story</a></li>
+                  <li><a href="{{ url_for('add_story') }}">Add Your Story</a></li>
                   <li><a href="{{ url_for('logout') }}">Logout</a></li>
                   {% else %}
                   <li><a href="">Our Stories</a></li>
@@ -83,8 +83,10 @@
       </div>
       <div class="section white">
          <div class="row container">
-            <h2 class="header">[about siblings]</h2>
-            <p class="grey-text text-darken-3 lighten-3"> is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+            <img class="fit-content" src="{{ url_for('static', filename='assets/images/logo.jpg') }}" alt="hero image"/>
+            <p class="grey-text text-darken-3 lighten-3">[about siblings] [as] brings multisensory art practises and philosophy together.
+                 At its heart “[as] touches on the many faces of young siblings’ relationships with great interest on how this relationship
+                 is being shaped and nurtured when a child’s brother(s) or sister(s) experiences disability and/or chronic illness.</p>
          </div>
       </div>
       <div class="parallax-container">
