@@ -105,7 +105,7 @@ def logout():
     return redirect(url_for("login"))
 
 
-# reviews functionality
+# stories functionality
 @app.route("/get_stories")
 def get_stories():
     """
