@@ -19,14 +19,11 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-
-
-
 @app.route("/")
-@app.route("/get_superheroes")
-def get_superheroes():
-    superheroes = list(mongo.db.superheroes.find())
-    return render_template("superheroes.html", superheroes=superheroes)
+@app.route("/home")
+def home():
+    category = list(mongo.db.genres.find().sort("category_name", 1))
+    return render_template("index.html", category=category)
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -108,12 +105,46 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_story")
+# reviews functionality
+@app.route("/get_stories")
+def get_stories():
+    """
+    Finds all stories in the database and sorts the cards
+    chronologically with more recent items first based on
+    the datetime info stored in '_id'
+    """
+    stories = list(mongo.db.stories.find().sort("_id", -1))
+    return render_template("stories.html", stories=stories)
+
+
+@app.route("/add_story", methods=["GET", "POST"])
 def add_story():
-    return render_template("add_story.html")
+    if request.method == "POST":
+        """
+        If post method is executed, creates a dictionary for form
+        and inserts user input into the database
+        """
+        add_story = {
+            "category_name": request.form.get("category_name"),
+            "illustration_lab": request.form.get("illustration_lab"),
+            "music_lab": request.form.get("music_lab"),
+            "dialogue_sessions": request.form.get("dialogue_sessions"),
+            "our_wearable_sculptures": request.form.get(
+                "our_wearable_sculptures"),
+            "img_url": request.form.get("img_url"),
+            "created_by": session["user"]
+        }
+        mongo.db.add_story.insert_one(add_story)
+        flash("Your Story Added Successfully!")
+        return redirect(url_for("get_stories"))
+
+    """Sort form values in alphabetical order"""
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template(
+        "add_story.html", categories=categories)
 
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")), 
+            port=int(os.environ.get("PORT")),
             debug=True)
