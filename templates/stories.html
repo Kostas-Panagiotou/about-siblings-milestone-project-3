@@ -1,28 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
-{% for stories in stories%}
-        {{ stories.illustration_lab }}<br>
-        {{ stories.category_name }}<br>
-        {{ stories.music_lab }}<br>
-        {{ stories.our_wearable_sculptures }}<br>
-        {{ stories.img_url }}<br>
-        {{ stories.created_by }}<br>
-        {% endfor %}
+
+<h3 class="light-blue-text text-darken-1 center-align">Our Stories</h3>
 
     <ul class="collapsible">
         {% for stories in stories %}
         <li>
-            <div class="collapsible-header white-text light-blue darken-4 text-shadow">
+            <div class="collapsible-header white-text light-blue darken-1 text-shadow">
                 <i class="fas fa-caret-down"></i>
-                <strong>{{ stories.ilustration_lab }}</strong> : {{ stories.music_lab }}
-                 <strong>{{ stories.our_wearable_sculptures }}</strong> : {{ stories.img_url }}
+                
+                <strong>{{ stories.stories_name }}</strong>:
+               
+                
             </div>
             <div class="collapsible-body">
-                <strong>{{ stories.category_name }}</strong>
-                 <p>{{ stories.created_by }}</p>
+                <strong>{{ gategory_name }}</strong>
+                <strong>{{ stories.stories_description }}</strong>
+                <p>{{ stories.img_url }}</p>
+                <p><em>by: {{ stories.created_by }}</em></p>
             </div>
         </li>
         {% endfor %}
     </ul>
 
-{% endblock %}
+ 
+
+     {% endblock %}                              
+                               
+                                                              
+                               
+
+
+
+                                       
