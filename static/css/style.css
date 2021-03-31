@@ -34,3 +34,14 @@ max-width: 100vw;
     object-fit: cover;
     z-index: -1;
 }
+
+
+.btn-small {
+    margin: 8px;
+}
+
+
+.collapsible-header .col strong {
+    margin: 5px;
+    line-height: 42px;
+}
