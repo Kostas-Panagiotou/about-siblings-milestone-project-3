@@ -7,16 +7,19 @@
         {% for stories in stories %}
         <li>
             <div class="collapsible-header white-text light-blue darken-1 text-shadow">
+                <div class="col-s3">
                 <i class="fas fa-caret-down"></i>
-                
-                <strong>{{ stories.stories_name }}</strong>:
+                <a href=""   class="waves-effect waves-light btn-small text-shadow red lighten-1  text-darken 2">Done  <i class="material-icons">cloud</i></a>
+                <a href=""   class="waves-effect waves-light btn-small text-shadow lime lighten-1  text-darken 2">Edit  <i class="material-icons">cloud</i></a>    
+            </div>
+                <strong>{{ stories.category_name }}</strong>:
                
                 
             </div>
             <div class="collapsible-body">
-                <strong>{{ gategory_name }}</strong>
-                <strong>{{ stories.stories_description }}</strong>
-                <p>{{ stories.img_url }}</p>
+                <strong>{{ stories.stories_name }}</strong>
+                <p>{{ stories.stories_description }}</p>
+                  <p>{{ stories.img_url }}</p>
                 <p><em>by: {{ stories.created_by }}</em></p>
             </div>
         </li>
