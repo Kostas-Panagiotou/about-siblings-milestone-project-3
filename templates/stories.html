@@ -10,7 +10,7 @@
                 <div class="col-s3">
                 <i class="fas fa-caret-down"></i>
                 <a href=""   class="waves-effect waves-light btn-small text-shadow red lighten-1  text-darken 2">Done  <i class="material-icons">cloud</i></a>
-                <a href=""   class="waves-effect waves-light btn-small text-shadow lime lighten-1  text-darken 2">Edit  <i class="material-icons">cloud</i></a>    
+                <a href="{{ url_for('edit_stories', stories_id=stories._id) }}"   class="waves-effect waves-light btn-small text-shadow lime lighten-1  text-darken 2">Edit  <i class="material-icons">cloud</i></a>    
             </div>
                 <strong>{{ stories.category_name }}</strong>:
                
