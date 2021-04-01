@@ -3,14 +3,16 @@
 
 <h3 class="light-blue-text text-darken-1 center-align">Our Stories</h3>
 
-    <ul class="collapsible">
+    <ul class="collapsible  light-blue-text">
         {% for stories in stories %}
         <li>
-            <div class="collapsible-header white-text light-blue darken-1 text-shadow">
+            <div class="collapsible-header white-text orange  text-shadow">
                 <div class="col-s3">
                 <i class="fas fa-caret-down"></i>
-                <a href=""   class="waves-effect waves-light btn-small text-shadow red lighten-1  text-darken 2">Done  <i class="material-icons">cloud</i></a>
-                <a href="{{ url_for('edit_stories', stories_id=stories._id) }}"   class="waves-effect waves-light btn-small text-shadow lime lighten-1  text-darken 2">Edit  <i class="material-icons">cloud</i></a>    
+                {% if session.user|lower == stories.created_by|lower %}
+                    <a href=""   class="waves-effect waves-light btn-small text-shadow light-blue lighten-1  text-darken 2">Done  <i class="material-icons">cloud</i></a>
+                    <a href="{{ url_for('edit_stories', stories_id=stories._id) }}"   class="waves-effect waves-light btn-small text-shadow lime lighten-1  text-darken 2">Edit  <i class="material-icons">cloud</i></a>    
+                {% endif %}
             </div>
                 <strong>{{ stories.category_name }}</strong>:
                
