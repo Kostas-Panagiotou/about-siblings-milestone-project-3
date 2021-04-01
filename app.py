@@ -144,6 +144,20 @@ def add_story():
 
 @app.route("/edit_stories/<stories_id>", methods=["GET", "POST"])
 def edit_stories(stories_id):
+    if request.method == "POST":
+        """
+       
+        """
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "stories_name": request.form.get("stories_name"),
+            "stories_description": request.form.get("stories_description"),
+            "img_url": request.form.get("img_url"),
+            "created_by": session["user"]
+        }
+        mongo.db.stories.update({"_id": ObjectId(stories_id)}, submit)
+        flash("Your Story Updated Successfully!")
+        
     stories = mongo.db.stories.find_one({"_id": ObjectId(stories_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(
