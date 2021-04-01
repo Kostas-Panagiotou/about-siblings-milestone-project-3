@@ -164,6 +164,13 @@ def edit_stories(stories_id):
         "edit_stories.html", stories=stories, categories=categories)
 
 
+@app.route("/delete_stories/<stories_id>")
+def delete_stories(stories_id):
+    mongo.db.stories.remove({"_id": ObjectId(stories_id)})
+    flash("Your Story is Successfully Deleted")
+    return redirect(url_for("get_stories"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
