@@ -117,6 +117,13 @@ def get_stories():
     return render_template("stories.html", stories=stories)
 
 
+@app.route("/search", methods={"GET", "POST"})
+def search():
+    query = request.form.get("query")
+    stories = list(mongo.db.stories.find({"$text": {"$search": query}}))
+    return render_template("stories.html", stories=stories)
+
+
 @app.route("/add_story", methods=["GET", "POST"])
 def add_story():
     if request.method == "POST":
