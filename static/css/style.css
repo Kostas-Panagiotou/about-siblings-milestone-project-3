@@ -13,17 +13,18 @@ min-height: 100vh;
     
 }
 
+
+.card-panel {
+   background-color: #fff3e0;
+   width: auto;
+}
+
 .brand-logo {
     margin-left: 15px;
     text-align: center;
 }
 
 
-
- .card-panel {
-   background-color: orange;
-   width: auto;
-}
 
 .flashes h4 {
    line-height: 2;
@@ -45,12 +46,75 @@ min-height: 100vh;
 }
 
 
-.btn-small {
-    margin: 8px;
+
+.card {
+    background-color:#f9a825;
 }
 
+.card-stories {
+    display: grid;
+    justify-content: center;
+    grid-gap: .25em;
+    grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
+    grid-auto-flow: row;
+}
 
-.collapsible-header .col strong {
-    margin: 5px;
-    line-height: 42px;
+.card-title.stories-name {
+    background-color: #f9a825c7;
+    padding: 15px;
+    border-radius: 0 8px 0 0;
+    font-family: "Orbitron", sans-serif;
+    font-weight: 500;    
+    font-size: calc(14px + (16 - 14) * ((100vw - 300px) / (1600 - 300))); 
+}
+
+.card-image img {
+    height: 270px;
+    object-fit: cover;
+}
+
+.created-by {
+    color: #616161;
+    margin-left: 30px;
+    font-size: calc(13px + (15 - 13) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.stories-data {
+   background-color: #f9a825c7;
+   padding: 0 30px;
+   color: #fafafa;
+   font-weight: 400;
+    
+}
+
+.card-content {
+    background-color: #fafafa;
+}
+
+.card .card-action {
+    background-color: #fafafa;
+    height: 45px;
+    padding: 7px;
+}
+
+.card .card-content p {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400; 
+    color: #616161;
+    margin-top: 15px;
+    margin-left: 30px;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 10px;
+}
+
+.btn {
+   border-radius: 5px;
+}
+
+.btn-small, .edit-btn {
+    background-color: #3d3b3b;
+    border-radius: 5px;
+    font-size: calc(10px + (11 - 10) * ((100vw - 300px) / (1600 - 300)));;
 }
