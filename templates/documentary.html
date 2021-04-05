@@ -18,7 +18,7 @@
  
  
  
- <header>
+  <header>
          <!-- top navbar -->
          <nav class="nav-extend text-shadow lime lighten-1  text-darken 2 ">
             <div class="nav-wrapper">
@@ -27,17 +27,17 @@
                <ul class="right hide-on-med-and-down  lime lighten-1  text-darken 2">
                   <li><a href="{{ url_for('home') }}">Home</a></li>
                   <li><a href="{{ url_for('about') }}">About</a></li>
+                  <li><a href="">Methodology</a></li>
+                  <li><a href="{{ url_for('documentary') }}">Short Documentary</a></li>
+                  <li><a href="{{ url_for('get_stories') }}">Our Stories</a></li>
                   {% if session.user %}
                   <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                   <li><a href="{{ url_for('add_story') }}">Add Your Story</a></li>
-                  <li><a href="{{ url_for('get_stories') }}">Our Stories</a></li>
                   {% if session.user|lower == "admin"|lower %}
                   <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
                   {% endif %}
                   <li><a href="{{ url_for('logout') }}">Logout</a></li>
                   {% else %}
-                  <li><a href="">Methodology</a></li>
-                  <li><a href="{{ url_for('documentary') }}">Short Documentary</a></li>
                   <li><a href="{{ url_for('login') }}">Login</a></li>
                   <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
                   {% endif %}
@@ -49,20 +49,21 @@
          <ul class="sidenav" id="mobile-demo">
             <li>
                <h4 class="center-align-left text-shadow lime lighten-1  text-darken 2">[about siblings]</h4>
+            
             </li>
             <li><a href="{{ url_for('home') }}">Home</a></li>
+             <li><a href="{{ url_for('about') }}">About</a></li> 
+              <li><a href="">Methodology</a></li>
+             <li><a href="{{ url_for('documentary') }}">Short Documentary</a></li>
+                  <li><a href="{{ url_for('get_stories') }}">Our Stories</a></li>
              {% if session.user %}
-                  <li><a href="{{ url_for('about') }}">About</a></li>
                   <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                   <li><a href="{{ url_for('add_story') }}">Add Your Story</a></li>
-                  <li><a href="{{ url_for('get_stories') }}">Our Stories</a></li>
-                  {% if session.user|lower == "admin"|lower %}
+                 {% if session.user|lower == "admin"|lower %}
                   <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
                    {% endif %}
                   <li><a href="{{ url_for('logout') }}">Logout</a></li>
                   {% else %}
-                  <li><a href="">Methodology</a></li>
-                  <li><a href="{{ url_for('documentary') }}">Short Documentary</a></li>
                   <li><a href="{{ url_for('login') }}">Login</a></li>
                   <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
                   {% endif %}
