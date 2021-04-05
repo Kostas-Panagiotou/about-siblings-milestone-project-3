@@ -1,59 +1,95 @@
 {% extends "base.html" %}
 {% block content %}
-
-<h3 class="light-blue-text text-darken-1 center-align">Our Stories</h3>
-
-<div class="row card-panel grey lighten-5">
-    <form  action="{{ url_for('search') }}"  method="post" class="col s12">
-        <div class="row valign-wrapper center-align">
-            <div class="input-field col s12 m8">
-                <i class="fas fa-search prefix light-blue-text text-darken-1"></i>
-                <input type="text" name="query" id="query"  minlength="2"  class="validate"  required>
-                <label for="query"> Search Your Stories </label>
+<div class="row">
+    <!--Title-->
+    <h3 class="page-title light-blue-text  text-darken-1 center-align">Our Stories</h3>   
+    <!--Search Bar-->
+    <div class="row card-panel m8 offset-m2 search-card  orange lighten-5  ">
+        <form action="{{ url_for('search') }}" method="POST" class="col s12">
+            <div class="row valign-wrapper center-align">
+                <i class="fas fa-search prefix"></i>
+                <div class="input-field col s12 m8">
+                    <input type="text" name="query" id="query" minlength="2" class="validate" required>
+                    <label for="query">Search Your Story</label>
+                </div>
+                <div class="col s12 m4">
+                    <a href="{{ url_for('get_stories') }}" class="red btn text-shadow"><i class="fas fa-undo-alt tooltipped" data-tooltip="Clear Search"></i></a>
+                    <button type="submit" class="green btn text-shadow"><i class="fas fa-search tooltipped" data-tooltip="Search"></i></button>
+                </div>
             </div>
-           <div class="col s12 m4">
-               <a href="{{ url_for('get_stories')}}" class="red btn text-shadow">Reset</a>
-               <button type="submit" class="light-blue darken-1 btn text-shadow">
-                   <i class="fas fa-search left"></i> Search
-               </button>
-           </div>
-      </div>
-    </form>
+        </form>
+        {% if session.user %}
+        <a class="col s12 m4 waves-effect waves-grey btn grey darken-2" href="{{ url_for('add_story') }}">
+            Add Your Story <i class="fas fa-plus"></i>
+        </a>
+        {% endif %}
+    </div>   
 </div>
-        {% if stories|length > 0 %}
-    <ul class="collapsible  light-blue-text">
+<!--Stories  Cards-->
+{% if stories|length > 0 %}
+<section class="row">
+    <div class="cards-container">
         {% for stories in stories %}
-        <li>
-            <div class="collapsible-header white-text orange  text-shadow">
-                <div class="col-s3">
-                <i class="fas fa-caret-down"></i>
-                {% if session.user|lower == stories.created_by|lower %}
-                    <a href="{{ url_for('delete_stories', stories_id=stories._id) }}"   class="waves-effect waves-light btn-small text-shadow light-blue lighten-1  text-darken 2">Delete  <i class="material-icons">cloud</i></a>
-                    <a href="{{ url_for('edit_stories', stories_id=stories._id) }}"   class="waves-effect waves-light btn-small text-shadow lime lighten-1  text-darken 2">Edit  <i class="material-icons">cloud</i></a>
-                {% endif %}
+        <div class="col s12 m8 offset-m2 l6 card-stories">                
+            <div class="card" id="{{ stories.stories_id }}">
+                        
+                            <div class="card-image">
+                                <img src="{{ stories.img_url}}" alt="Stories image" loading="lazy">
+                                <span class="card-title stories-name text-shadow"><u>{{ stories.stories_name }}</u></span>
+                            </div>
+                            <div class="stories-content-wrapper">
+                                <div class="stories-data text-shadow">
+                                    <ul>
+                                        <li>
+                                            Category: {{ stories.category_name }}<br>
+                                        </li>
+                                        
+                                        <li class="truncate">
+                                            Story Name: {{ stories.stories_name }}<br>
+                                        </li>
+                                        <li>
+                                            Your Story: {{ stories.stories_description }}<br>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <span class="created-by left">by <strong>{{ stories.created_by }}</strong></span>
+                                <div class="card-content">
+                                                               
+                                </div>
+                            </div>
+                      
+                    <div class="card-action">
+                        {% if stories.created_by|lower == session.user|lower %}
+                        <a href="{{ url_for('edit_stories', stories_id=stories._id) }}"
+                            class="btn-small darken-2 text-shadow left edit-btn">Edit Your Story <i
+                                class="fas fa-edit"></i></a>
+                        <a href="{{ url_for('delete_stories', stories_id=stories._id) }}"
+                        class="btn-small darken-2 text-shadow right delete-btn">Delete Your Story <i
+                                class="fas fa-trash-alt right"></i></a>
+                        {% endif %}
+                        {% if session.user|lower == "admin"|lower %}
+                        <a data-target="{{ stories._id }}" class="btn-small del-btn grey darken-1 right modal-trigger">
+                            Delete <i class="fas fa-trash-alt right"></i>
+                        </a>
+                        {% endif %}                        
+                    </div>
+                    
             </div>
-                <strong>{{ stories.category_name }}</strong>:
-               
-                
-            </div>
-            <div class="collapsible-body">
-                <strong>{{ stories.stories_name }}</strong>
-                <p>{{ stories.stories_description }}</p>
-                  <p>{{ stories.img_url }}</p>
-                <p><em>by: {{ stories.created_by }}</em></p>
-            </div>
-        </li>
+        </div>        
         {% endfor %}
-    </ul>
-        {% else %}
-        <h3 class="red-text text-darken-4 center-align">Sorry! No Results Found</h3>
-    {% endif %}
- 
+    </div>
+</section>
+           
+        
 
-     {% endblock %}                              
-                               
-                                                              
-                               
+       
+   
+
+{% else %}
+<h3 class="red-text text-darken-4 center-align">Sorry! No Results Found</h3>
+{% endif %}
+
+{% endblock %}
 
 
 
