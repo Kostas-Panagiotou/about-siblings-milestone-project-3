@@ -26,6 +26,18 @@ def home():
     return render_template("index.html", category=category)
 
 
+@app.route("/about")
+def about():
+    category = list(mongo.db.genres.find().sort("category_name", 1))
+    return render_template("about.html", category=category)
+
+
+@app.route("/documentary")
+def documentary():
+    category = list(mongo.db.genres.find().sort("category_name", 1))
+    return render_template("documentary.html", category=category)
+
+
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -113,7 +125,7 @@ def get_stories():
     chronologically with more recent items first based on
     the datetime info stored in '_id'
     """
-    stories = list(mongo.db.stories.find())
+    stories = list(mongo.db.stories.find().sort("_id", -1))
     return render_template("stories.html", stories=stories)
 
 
@@ -153,7 +165,8 @@ def add_story():
 def edit_stories(stories_id):
     if request.method == "POST":
         """
-
+        If post method is executed, finds stories by id
+        and updates database with updated form input
         """
         submit = {
             "category_name": request.form.get("category_name"),
@@ -173,6 +186,7 @@ def edit_stories(stories_id):
 
 @app.route("/delete_stories/<stories_id>")
 def delete_stories(stories_id):
+    """Finds stories by id and removes it from the database"""
     mongo.db.stories.remove({"_id": ObjectId(stories_id)})
     flash("Your Story is Successfully Deleted")
     return redirect(url_for("get_stories"))
