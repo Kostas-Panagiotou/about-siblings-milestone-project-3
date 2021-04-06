@@ -23,7 +23,7 @@
                <ul class="right hide-on-med-and-down  lime lighten-1  text-darken 2">
                   <li><a href="{{ url_for('home') }}">Home</a></li>
                   <li><a href="{{ url_for('about') }}">About</a></li>
-                  <li><a href="">Methodology</a></li>
+                  <li><a href="{{ url_for('methodology') }}">Methodology</a></li>
                   <li><a href="{{ url_for('documentary') }}">Short Documentary</a></li>
                   <li><a href="{{ url_for('get_stories') }}">Our Stories</a></li>
                   {% if session.user %}
@@ -49,7 +49,7 @@
             </li>
             <li><a href="{{ url_for('home') }}">Home</a></li>
              <li><a href="{{ url_for('about') }}">About</a></li> 
-              <li><a href="">Methodology</a></li>
+              <li><a href="{{ url_for('methodology') }}">Methodology</a></li>
              <li><a href="{{ url_for('documentary') }}">Short Documentary</a></li>
                   <li><a href="{{ url_for('get_stories') }}">Our Stories</a></li>
              {% if session.user %}
