@@ -32,6 +32,12 @@ def about():
     return render_template("about.html", category=category)
 
 
+@app.route("/methodology")
+def methodology():
+    category = list(mongo.db.genres.find().sort("category_name", 1))
+    return render_template("methodology.html", category=category)
+
+
 @app.route("/documentary")
 def documentary():
     category = list(mongo.db.genres.find().sort("category_name", 1))
