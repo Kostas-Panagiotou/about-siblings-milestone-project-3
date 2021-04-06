@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" 
+         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" type="text/css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+      {% block styles %}
+      {% endblock %}
+      <title>About Siblings</title>
+   </head>
+   <body>
+      
+      <header>
+         <!-- top navbar -->
+         <nav class="nav-extend text-shadow lime lighten-1  text-darken 2 ">
+            <div class="nav-wrapper">
+               <a href="{{ url_for('home') }}" class="brand-logo  left black-text ">[about siblings]</a>
+               <a href="#" data-target="mobile-demo" class="sidenav-trigger  right"><i class="fa fa-bars"></i></a>
+               <ul class="right hide-on-med-and-down  lime lighten-1  text-darken 2">
+                  <li><a href="{{ url_for('home') }}">Home</a></li>
+                  <li><a href="{{ url_for('about') }}">About</a></li>
+                  <li><a href="{{ url_for('methodology') }}">Methodology</a></li>
+                  <li><a href="{{ url_for('documentary') }}">Short Documentary</a></li>
+                  <li><a href="{{ url_for('get_stories') }}">Our Stories</a></li>
+                  {% if session.user %}
+                  <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                  <li><a href="{{ url_for('add_story') }}">Add Your Story</a></li>
+                  {% if session.user|lower == "admin"|lower %}
+                  <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
+                  {% endif %}
+                  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  {% else %}
+                  <li><a href="{{ url_for('login') }}">Login</a></li>
+                  <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                  {% endif %}
+                </ul>
+            </div>
+         </nav>
+         
+         <!-- mobile sidenav -->
+         <ul class="sidenav" id="mobile-demo">
+            <li>
+               <h4 class="center-align-left text-shadow lime lighten-1  text-darken 2">[about siblings]</h4>
+            
+            </li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+             <li><a href="{{ url_for('about') }}">About</a></li> 
+              <li><a href="{{ url_for('methodology') }}">Methodology</a></li>
+             <li><a href="{{ url_for('documentary') }}">Short Documentary</a></li>
+                  <li><a href="{{ url_for('get_stories') }}">Our Stories</a></li>
+             {% if session.user %}
+                  <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                  <li><a href="{{ url_for('add_story') }}">Add Your Story</a></li>
+                 {% if session.user|lower == "admin"|lower %}
+                  <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
+                   {% endif %}
+                  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  {% else %}
+                  <li><a href="{{ url_for('login') }}">Login</a></li>
+                  <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                  {% endif %}
+         </ul>
+      </header>
+      
+      <section>
+          <!--  flash messages over here!-->
+           {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row flashes">
+                        <h4 class="light-blue lighten-4 center-align">{{ message }}</h4>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+      </section>
+      
+      <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main> 
+     
+    <!-- container with 2 images and text -->
+      <div class="parallax-container">
+         <div class="parallax"><img src="{{ url_for('static', filename='assets/images/disability.jpg') }}"></div>
+      </div>
+      <div class="section white">
+         <div class="row container">
+            <img class="fit-content" src="{{ url_for('static', filename='assets/images/logo.jpg') }}" alt="hero image"/>
+            <h4>Methodology:</h4>
+            <p class="grey-text text-darken-3 lighten-3"><br> [as] combines arts & philosophy aiming to reach out to young people in a meaningful way.
+                 Together with illustrator Celia Ivey, musician Steph Singer & community artist Constantina Georgiou, 
+                 siblings will explore the influence of (super/anti)heros in their lives & create their own hero illustration. 
+                 Siblings’ heros will inspire real life wearable sculptures created by multidisciplinary artist Julia Schoina. 
+                 [as] activities are free, tailored & interactive. Siblings will engage in 4 creative labs culminating in a short animation documentary,
+                  a sound composition & a postcard series. [as] will conclude with an outdoor art celebration where siblings will gather in their wearable sculptures
+                   singing,
+                   dancing, or simply being there in the moment. By mixing music, sound and visual references of illustration and costume design we will
+                    create our own music as well as wearable sculptures driven by the participants’ imagination.
+
+                 Philosophy practitioner Maria Prodromou will facilitate 6 dialogue sessions run as a Community of Inquiry creating space for non-disabled siblings
+                  to converse into matters that matter to them. We anticipate that these will explore the joys & challenges of their everyday lives, as well
+                   as their hopes. 2 separate sessions will engage parents/carers.
+
+
+                 Everyone enters the project in different phases and together we form the creative process and spend time with the siblings in series of creative labs,
+                  private conversations and interviews which will ultimately lead to a tangible end-result, - an art box-reflecting the process, the needs
+                   of the participants and our shared creative input.
+
+                Personalised art boxes will be sent to every participant with a dual purpose: a standalone multi-sensory experience for the siblings to enjoy together,
+                 as well as a kit of creative materials to be used in a shared live jam session with costume design, movement and sound.
+
+               [as] will culminate in a short animation documentary, a limited-edition poster series and a sound composition in response to the entire process. 
+                The process will be documented in a report, gathering key information and learnings on how to best move forward. 
+                This will help us establish the framework for designing a year-long series of tailored workshops which will result in outdoor art interventions
+                 in participants’ neighbourhoods.
+                                                 </p><br>
+         </div>
+      </div>
+      <div class="parallax-container">
+         <div class="parallax"><img src="{{ url_for('static', filename='assets/images/disability.jpg') }}"></div>
+      </div>
+       
+    
+    
+    
+    
+    
+    <!--Footer-->    
+      <footer class="page-footer text-shadow lime lighten-1  text-darken 2 ">
+         <div class="container">
+            <div class="row">
+               <div class="col l6 s12">
+                  <h5 class="white-text">Footer Content</h5>
+                  <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+               </div>
+               <div class="col l4 offset-l2 s12">
+                  <h5 class="white-text">Links</h5>
+                  <ul>
+                     <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                     <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                     <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                     <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="footer-copyright">
+            <div class="container center-align">
+               © 2021 Kostas Panagiotou
+            </div>
+         </div>
+      </footer>
+     
+    
+       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+      {% block scripts %}
+      {% endblock %}
+   </body>
+</html>
