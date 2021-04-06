@@ -13,7 +13,6 @@
       <title>About Siblings</title>
    </head>
    <body>
-      
       <header>
          <!-- top navbar -->
          <nav class="nav-extend text-shadow lime lighten-1  text-darken 2 ">
@@ -27,7 +26,6 @@
                   <li><a href="{{ url_for('documentary') }}">Short Documentary</a></li>
                   <li><a href="{{ url_for('get_stories') }}">Our Stories</a></li>
                   {% if session.user %}
-                  <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                   <li><a href="{{ url_for('add_story') }}">Add Your Story</a></li>
                   {% if session.user|lower == "admin"|lower %}
                   <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
@@ -37,78 +35,67 @@
                   <li><a href="{{ url_for('login') }}">Login</a></li>
                   <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
                   {% endif %}
-                </ul>
+               </ul>
             </div>
          </nav>
-         
          <!-- mobile sidenav -->
          <ul class="sidenav" id="mobile-demo">
             <li>
                <h4 class="center-align-left text-shadow lime lighten-1  text-darken 2">[about siblings]</h4>
-            
             </li>
             <li><a href="{{ url_for('home') }}">Home</a></li>
-             <li><a href="{{ url_for('about') }}">About</a></li> 
-              <li><a href="{{ url_for('methodology') }}">Methodology</a></li>
-             <li><a href="{{ url_for('documentary') }}">Short Documentary</a></li>
-                  <li><a href="{{ url_for('get_stories') }}">Our Stories</a></li>
-             {% if session.user %}
-                  <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                  <li><a href="{{ url_for('add_story') }}">Add Your Story</a></li>
-                 {% if session.user|lower == "admin"|lower %}
-                  <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
-                   {% endif %}
-                  <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                  {% else %}
-                  <li><a href="{{ url_for('login') }}">Login</a></li>
-                  <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
-                  {% endif %}
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('methodology') }}">Methodology</a></li>
+            <li><a href="{{ url_for('documentary') }}">Short Documentary</a></li>
+            <li><a href="{{ url_for('get_stories') }}">Our Stories</a></li>
+            {% if session.user %}
+            <li><a href="{{ url_for('add_story') }}">Add Your Story</a></li>
+            {% if session.user|lower == "admin"|lower %}
+            <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
+            {% endif %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+            {% endif %}
          </ul>
       </header>
-      
       <section>
-          <!--  flash messages over here!-->
-           {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="row flashes">
-                        <h4 class="light-blue lighten-4 center-align">{{ message }}</h4>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+         <!--  flash messages over here!-->
+         {% with messages = get_flashed_messages() %}
+         {% if messages %}
+         {% for message in messages %}
+         <div class="row flashes">
+            <h4 class="light-blue lighten-4 center-align">{{ message }}</h4>
+         </div>
+         {% endfor %}
+         {% endif %}
+         {% endwith %}
       </section>
-      
       <main class="container">
-        {% block content %}
-        {% endblock %}
-    </main> 
-     
-    <!-- container with 2 images and text -->
+         {% block content %}
+         {% endblock %}
+      </main>
+      <!-- container with 2 images and text -->
       <div class="parallax-container">
          <div class="parallax"><img src="{{ url_for('static', filename='assets/images/fly.png') }}"></div>
       </div>
       <div class="section white">
          <div class="row container">
             <img class="fit-content" src="{{ url_for('static', filename='assets/images/logo.jpg') }}" alt="hero image"/>
-            
             <p class="grey-text text-darken-3 lighten-3"><br> At its heart [about siblings] - “[as]”- touches on the many faces of young siblings’
-                 relationships with great interest on how this relationship is being shaped and nurtured when a child’s brother(s) or sister(s)
-                  experiences disability and/or chronic illness. In collaboration with a Bristol Specialist SEN School, [as] targets children and
-                  young people who are disabled and/or experience chronic illness aged 9 -17 and their siblings. [as] is due to be implemented between June and July 2021.
-                 Subject to covid-19 restrictions, activities will ideally happen with the physical presence of everyone involved in the school facilities, or virtually.</p><br>
+               relationships with great interest on how this relationship is being shaped and nurtured when a child’s brother(s) or sister(s)
+               experiences disability and/or chronic illness. In collaboration with a Bristol Specialist SEN School, [as] targets children and
+               young people who are disabled and/or experience chronic illness aged 9 -17 and their siblings. [as] is due to be implemented between June and July 2021.
+               Subject to covid-19 restrictions, activities will ideally happen with the physical presence of everyone involved in the school facilities, or virtually.
+            </p>
+            <br>
          </div>
       </div>
       <div class="parallax-container">
          <div class="parallax"><img src="{{ url_for('static', filename='assets/images/fly.png') }}"></div>
       </div>
-       
-    
-    
-    
-    
-    
-    <!--Footer-->    
+      <!--Footer-->    
       <footer class="page-footer text-shadow lime lighten-1  text-darken 2 ">
          <div class="container">
             <div class="row">
@@ -133,10 +120,8 @@
             </div>
          </div>
       </footer>
-     
-    
-       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+         integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <script src="{{ url_for('static', filename='js/script.js') }}"></script>
       {% block scripts %}

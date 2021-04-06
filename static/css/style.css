@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round:wght@400;500&family=Roboto:wght@300;400&display=swap');
 
+/*----------------------------------------------------------------General*/
 
 body {
 font-family: "Varela", "roboto";
@@ -23,13 +24,6 @@ min-height: 100vh;
     margin-left: 15px;
     text-align: center;
 }
-
-
-
-.flashes h4 {
-   line-height: 2;
-}
-
 .row container {
     width: fit-content;
 }
@@ -47,6 +41,13 @@ min-height: 100vh;
 }
 
 
+/*-------------------------------Flashed Messages*/
+
+.flashes h4 {
+   line-height: 2;
+}
+
+/*-------------------------------------------Stories & Our Stories Pages*/
 
 .card {
     background-color:#f9a825;

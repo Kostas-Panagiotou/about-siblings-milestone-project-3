@@ -44,6 +44,7 @@ def documentary():
     return render_template("documentary.html", category=category)
 
 
+# create signup functionality
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -68,9 +69,8 @@ def signup():
         return redirect(url_for("profile", username=session["user"]))
     return render_template("signup.html")
 
+
 #  login-logout functionality
-
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """
@@ -135,6 +135,7 @@ def get_stories():
     return render_template("stories.html", stories=stories)
 
 
+# search functionality
 @app.route("/search", methods={"GET", "POST"})
 def search():
     query = request.form.get("query")
@@ -157,7 +158,7 @@ def add_story():
             "created_by": session["user"]
         }
         mongo.db.stories.insert_one(stories)
-        flash("Your Story Added Successfully!")
+        flash("Your Story Was Successfully Added")
         return redirect(url_for("get_stories"))
 
     """Sort form values in alphabetical order"""
@@ -238,7 +239,14 @@ def delete_category(category_id):
     return redirect(url_for("get_categories"))
 
 
+# 500 page function
+@app.errorhandler(500)
+def internal_server(error):
+    # the 500 status is set explicitly
+    return render_template('500.html', title='500'), 500
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)

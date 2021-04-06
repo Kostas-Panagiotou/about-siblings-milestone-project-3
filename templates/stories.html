@@ -1,96 +1,80 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="row">
-    <!--Title-->
-    <h3 class="page-title light-blue-text  text-darken-1 center-align">Our Stories</h3>   
-    <!--Search Bar-->
-    <div class="row card-panel m8 offset-m2 search-card  orange lighten-5  ">
-        <form action="{{ url_for('search') }}" method="POST" class="col s12">
-            <div class="row valign-wrapper center-align">
-                <i class="fas fa-search prefix"></i>
-                <div class="input-field col s12 m8">
-                    <input type="text" name="query" id="query" minlength="2" class="validate" required>
-                    <label for="query">Search Your Story</label>
-                </div>
-                <div class="col s12 m4">
-                    <a href="{{ url_for('get_stories') }}" class="red btn text-shadow"><i class="fas fa-undo-alt tooltipped" data-tooltip="Clear Search"></i></a>
-                    <button type="submit" class="green btn text-shadow"><i class="fas fa-search tooltipped" data-tooltip="Search"></i></button>
-                </div>
+   <!--Title-->
+   <h3 class="page-title light-blue-text  text-darken-1 center-align">Our Stories</h3>
+   <!--Search Bar-->
+   <div class="row card-panel m8 offset-m2 search-card  orange lighten-5  ">
+      <form action="{{ url_for('search') }}" method="POST" class="col s12">
+         <div class="row valign-wrapper center-align">
+            <i class="fas fa-search prefix"></i>
+            <div class="input-field col s12 m8">
+               <input type="text" name="query" id="query" minlength="2" class="validate" required>
+               <label for="query">Discover Our Stories</label>
             </div>
-        </form>
-        {% if session.user %}
-        <a class="col s12 m4 waves-effect waves-grey btn grey darken-2" href="{{ url_for('add_story') }}">
-            Add Your Story <i class="fas fa-plus"></i>
-        </a>
-        {% endif %}
-    </div>   
+            <div class="col s12 m4">
+               <a href="{{ url_for('get_stories') }}" class="red btn text-shadow"><i class="fas fa-undo-alt tooltipped" data-tooltip="Clear Search"></i></a>
+               <button type="submit" class="green btn text-shadow"><i class="fas fa-search tooltipped" data-tooltip="Search"></i></button>
+            </div>
+         </div>
+      </form>
+      {% if session.user %}
+      <a class="col s12 m4 waves-effect waves-grey btn grey darken-2" href="{{ url_for('add_story') }}">
+      Add Your Story <i class="fas fa-plus"></i>
+      </a>
+      {% endif %}
+   </div>
 </div>
 <!--Stories  Cards-->
 {% if stories|length > 0 %}
 <section class="row">
-    <div class="cards-container">
-        {% for stories in stories %}
-        <div class="col s12 m8 offset-m2 l6 card-stories">                
-            <div class="card" id="{{ stories.stories_id }}">
-                        
-                            <div class="card-image">
-                                <img src="{{ stories.img_url}}" alt="Stories image" loading="lazy">
-                                <span class="card-title stories-name text-shadow"><u>{{ stories.stories_name }}</u></span>
-                            </div>
-                            <div class="stories-content-wrapper">
-                                <div class="stories-data text-shadow">
-                                    <ul>
-                                        <li>
-                                            Category: {{ stories.category_name }}<br>
-                                        </li>
-                                        
-                                        <li class="truncate">
-                                            Story Name: {{ stories.stories_name }}<br>
-                                        </li>
-                                        <li>
-                                            Your Story: {{ stories.stories_description }}<br>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <span class="created-by left">by <strong>{{ stories.created_by }}</strong></span>
-                                <div class="card-content">
-                                                               
-                                </div>
-                            </div>
-                      
-                    <div class="card-action">
-                        {% if stories.created_by|lower == session.user|lower %}
-                        <a href="{{ url_for('edit_stories', stories_id=stories._id) }}"
-                            class="btn-small darken-2 text-shadow left edit-btn">Edit Your Story <i
-                                class="fas fa-edit"></i></a>
-                        <a href="{{ url_for('delete_stories', stories_id=stories._id) }}"
-                        class="btn-small darken-2 text-shadow right delete-btn">Delete Your Story <i
-                                class="fas fa-trash-alt right"></i></a>
-                        {% endif %}
-                        {% if session.user|lower == "admin"|lower %}
-                        <a data-target="{{ stories._id }}" class="btn-small del-btn grey darken-1 right modal-trigger">
-                            Delete <i class="fas fa-trash-alt right"></i>
-                        </a>
-                        {% endif %}                        
-                    </div>
-                    
+   <div class="cards-container">
+      {% for stories in stories %}
+      <div class="col s12 m8 offset-m2 l6 card-stories">
+         <div class="card" id="{{ stories.stories_id }}">
+            <div class="card-image">
+               <img src="{{ stories.img_url}}" alt="Stories image" loading="lazy">
+               <span class="card-title stories-name text-shadow"><u>{{ stories.stories_name }}</u></span>
             </div>
-        </div>        
-        {% endfor %}
-    </div>
+            <div class="stories-content-wrapper">
+               <div class="stories-data text-shadow">
+                  <ul>
+                     <li>
+                        Category: {{ stories.category_name }}<br>
+                     </li>
+                     <li class="truncate">
+                        Story Name: {{ stories.stories_name }}<br>
+                     </li>
+                     <li>
+                        Your Story: {{ stories.stories_description }}<br>
+                     </li>
+                  </ul>
+               </div>
+               <span class="created-by left">by <strong>{{ stories.created_by }}</strong></span>
+               <div class="card-content">
+               </div>
+            </div>
+            <div class="card-action">
+               {% if stories.created_by|lower == session.user|lower %}
+               <a href="{{ url_for('edit_stories', stories_id=stories._id) }}"
+                  class="btn-small darken-2 text-shadow left edit-btn">Edit Your Story <i
+                  class="fas fa-edit"></i></a>
+               <a href="{{ url_for('delete_stories', stories_id=stories._id) }}"
+                  class="btn-small darken-2 text-shadow right delete-btn">Delete Your Story <i
+                  class="fas fa-trash-alt right"></i></a>
+               {% endif %}
+               {% if session.user|lower == "admin"|lower %}
+               <a data-target="{{ stories._id }}" class="btn-small del-btn grey darken-1 right modal-trigger">
+               Delete <i class="fas fa-trash-alt right"></i>
+               </a>
+               {% endif %}                        
+            </div>
+         </div>
+      </div>
+      {% endfor %}
+   </div>
 </section>
-           
-        
-
-       
-   
-
 {% else %}
 <h3 class="red-text text-darken-4 center-align">Sorry! No Results Found</h3>
 {% endif %}
-
 {% endblock %}
-
-
-
-                                       

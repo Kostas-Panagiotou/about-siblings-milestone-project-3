@@ -12,13 +12,8 @@
       {% endblock %}
       <title>About Siblings</title>
    </head>
- 
-  <body>
- 
- 
- 
- 
-  <header>
+   <body>
+      <header>
          <!-- top navbar -->
          <nav class="nav-extend text-shadow lime lighten-1  text-darken 2 ">
             <div class="nav-wrapper">
@@ -30,8 +25,7 @@
                   <li><a href="{{ url_for('methodology') }}">Methodology</a></li>
                   <li><a href="{{ url_for('documentary') }}">Short Documentary</a></li>
                   <li><a href="{{ url_for('get_stories') }}">Our Stories</a></li>
-                  {% if session.user %}
-                  <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                  {% if session.user %}                 
                   <li><a href="{{ url_for('add_story') }}">Add Your Story</a></li>
                   {% if session.user|lower == "admin"|lower %}
                   <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
@@ -41,48 +35,40 @@
                   <li><a href="{{ url_for('login') }}">Login</a></li>
                   <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
                   {% endif %}
-                </ul>
+               </ul>
             </div>
          </nav>
-         
          <!-- mobile sidenav -->
          <ul class="sidenav" id="mobile-demo">
             <li>
                <h4 class="center-align-left text-shadow lime lighten-1  text-darken 2">[about siblings]</h4>
-            
             </li>
             <li><a href="{{ url_for('home') }}">Home</a></li>
-             <li><a href="{{ url_for('about') }}">About</a></li> 
-              <li><a href="{{ url_for('methodology') }}">Methodology</a></li>
-             <li><a href="{{ url_for('documentary') }}">Short Documentary</a></li>
-                  <li><a href="{{ url_for('get_stories') }}">Our Stories</a></li>
-             {% if session.user %}
-                  <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                  <li><a href="{{ url_for('add_story') }}">Add Your Story</a></li>
-                 {% if session.user|lower == "admin"|lower %}
-                  <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
-                   {% endif %}
-                  <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                  {% else %}
-                  <li><a href="{{ url_for('login') }}">Login</a></li>
-                  <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
-                  {% endif %}
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('methodology') }}">Methodology</a></li>
+            <li><a href="{{ url_for('documentary') }}">Short Documentary</a></li>
+            <li><a href="{{ url_for('get_stories') }}">Our Stories</a></li>
+            {% if session.user %}
+            <li><a href="{{ url_for('add_story') }}">Add Your Story</a></li>
+            {% if session.user|lower == "admin"|lower %}
+            <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
+            {% endif %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+            {% endif %}
          </ul>
       </header>
-      
-
-
-
-   <div class="video-container">
-
-<div style="padding:56.25% 0 0 0;position:relative;">
-    <iframe src="https://player.vimeo.com/video/125095827" style="position:absolute;top:0;left:0;width:100%;height:100%;"
-     frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
-    </iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-
-   </div>
-
- <!--Footer-->    
+      <div class="video-container">
+         <div style="padding:56.25% 0 0 0;position:relative;">
+            <iframe src="https://player.vimeo.com/video/125095827" style="position:absolute;top:0;left:0;width:100%;height:100%;"
+               frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+            </iframe>
+         </div>
+         <script src="https://player.vimeo.com/api/player.js"></script>
+      </div>
+      <!--Footer-->    
       <footer class="page-footer text-shadow lime lighten-1  text-darken 2 ">
          <div class="container">
             <div class="row">
@@ -107,12 +93,9 @@
             </div>
          </div>
       </footer>
-     
-    
-       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+         integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-      
    </body>
 </html>
