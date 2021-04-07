@@ -214,7 +214,7 @@ Follow the steps below if you are wanting to propose changes to the project or t
 When you clone a repository, the repository is copied on to your local machine.
 
 1. Log in to GitHub and locate the GitHub Repository.
-   - uReview repository can be found [here](https://github.com/NikolasKotsikos/uReview)
+   - [about siblings] repository can be found [here](https://github.com/lordcostas/about-siblings)
 
 2. Under the repository name, click the "download code" option.   
 
@@ -227,12 +227,12 @@ When you clone a repository, the repository is copied on to your local machine.
 6. Type git clone, and then paste the URL you copied in Step 3.
 
     ```
-    $ git clone https://github.com/YOUR-USERNAME/ureview.git
+    $ git clone 
     ```
 
 7. Press Enter. Your local clone will be created.
 
-      Now, you have a local copy of your fork of the uReview repository.
+      Now, you have a local copy of your fork of the about-siblings repository.
 
     > **Note:** The repository name and output numbers that you see on your computer, representing the total file size, etc, may differ from the example I have provided above.
 
