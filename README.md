@@ -4,7 +4,7 @@
 
 This is my Milestone Project 3. The purpose of this website is to host the information about Among the Ants’ project [aboutsiblings] .
 
-![](/assets/images/last.png)
+![](/assets/images/about-siblings.png)
 
 ## User Experience (UX)
 
